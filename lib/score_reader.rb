@@ -8,11 +8,11 @@ class ScoreReader
     @curricula = []
 
     CSV.foreach(curricula) do |key,*values|
-      h = CommonCore::IndifferentHash.new
+      h = CommonCore::InsensitiveHash.new
       h[key] = values
-      @curricula << h
+      @curricula << h.freeze
     end
-
+    @curricula.freeze
 
     scores_matrix = CSV.read(scores)
     headers = scores_matrix[0]
@@ -24,5 +24,20 @@ class ScoreReader
   end
 
   def sieve(student)
+    @lesson_plan = []
+    @curricula.each do |curriculum|
+      grade = curriculum.keys.first
+      lessons = curriculum[grade]
+      grade_hash = CommonCore::InsensitiveHash.new
+      grade_hash[grade] = []
+      lessons.each do |lesson|
+        puts "#{lesson}, #{grade}, #{student.needs_lesson?(lesson, grade)}"
+        if student.needs_lesson?(lesson, grade)
+          grade_hash[grade] << lesson
+        end
+      end
+      @lesson_plan << grade_hash unless grade_hash[grade].empty?
+    end
+    @lesson_plan 
   end
 end

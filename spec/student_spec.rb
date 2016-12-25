@@ -24,6 +24,7 @@ describe CommonCore::Student do
       [ 4, true ],
       [ 5, true ],
     ].each do |level, bool|
+      expect( @student.needs_lesson?("RF", level.to_s) ).to be bool
       expect( @student.needs_lesson?(:RF, level) ).to be bool
     end
   end

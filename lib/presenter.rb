@@ -7,7 +7,7 @@ class Presenter
   # i.e. {RL: "Reading Literature"}
 
   def initialize(**kwargs)
-    @definitions = CommonCore::IndifferentHash.new
+    @definitions = CommonCore::InsensitiveHash.new
     CSV.foreach(File.join(CommonCore::ROOT, 'data', 'definitions.csv')) do |key,value|
       @definitions[key] = value
     end
