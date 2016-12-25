@@ -44,7 +44,6 @@ describe CommonCore::ScoreReader do
     student = CommonCore::Student.new(
       "John McGuirk", RF:"5", RL:"5", RI:'5', L:"4"
     )
-    plan = @reader.sieve(student)
     expect(@reader.sieve(student)).to eql(
       [["4", ["L"]], ["5", ["RI", "RL", "L"]], ["6", ["RI", "RL"]]]
     )

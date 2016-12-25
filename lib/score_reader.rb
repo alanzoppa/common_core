@@ -4,20 +4,17 @@ class ScoreReader
   attr_reader :curricula, :students
 
   def initialize(curricula, scores, presenter)
-    @presenter = presenter
-    @curricula = []
-
-    CSV.foreach(curricula) do |grade, *lessons|
-      @curricula << [grade, lessons]
-    end
-    @curricula.freeze
-
     scores_matrix = CSV.read(scores)
-    headers = scores_matrix[0]
-    @students = scores_matrix[1..-1].map {|s| headers.zip(s).to_h}
-    @students.map! do |student|
-      CommonCore::Student.new(student.delete("Student Name"), student)
+
+    @students = scores_matrix[1..-1].map do |student_data|
+      student_hash = scores_matrix.first.zip(student_data).to_h
+      CommonCore::Student.new(
+        student_hash.delete("Student Name"),
+        student_hash
+      )
     end
+
+    @curricula = CSV.read(curricula).map {|grade, *lessons| [grade, lessons] }
   end
 
   def sieve(student)

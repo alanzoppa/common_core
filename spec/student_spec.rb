@@ -5,7 +5,7 @@ require 'pry'
 describe CommonCore::Student do
   before :all do
     @student = CommonCore::Student.new(
-      "John McGuirk", RF:"2", RL:"3", RI:'K', L:"3"
+      "John McGuirk", RF:"2", RL:3, RI:'K', L:"3"
     )
   end
 
@@ -36,7 +36,5 @@ describe CommonCore::Student do
   it "blows up if the level is negative" do
     expect {@student.needs_lesson?(:bogus, -1) }.to raise_error RangeError
   end
-
-
 
 end

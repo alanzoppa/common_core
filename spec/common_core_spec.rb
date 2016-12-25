@@ -1,5 +1,4 @@
 require "spec_helper"
-require 'pry'
 
 describe CommonCore do
   it "has a version number" do
