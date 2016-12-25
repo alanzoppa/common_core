@@ -31,7 +31,6 @@ class ScoreReader
       grade_hash = CommonCore::InsensitiveHash.new
       grade_hash[grade] = []
       lessons.each do |lesson|
-        puts "#{lesson}, #{grade}, #{student.needs_lesson?(lesson, grade)}"
         if student.needs_lesson?(lesson, grade)
           grade_hash[grade] << lesson
         end

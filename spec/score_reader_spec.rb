@@ -26,8 +26,16 @@ describe CommonCore::ScoreReader do
     end
   end
 
-  #it "should generate a lesson plan" do
-    #plan = @reader.sieve(@student)
-  #end
+  it "should generate a lesson plan" do
+    expect(@reader.sieve(@student)).to eql [
+      {"K"=>["RI"]},
+      {"1"=>["RI"]},
+      {"2"=>["RF", "RI"]},
+      {"3"=>["RF", "RL", "RI", "L"]},
+      {"4"=>["RI", "RL", "L"]},
+      {"5"=>["RI", "RL", "L"]},
+      {"6"=>["RI", "RL"]}
+    ]
+  end
 
 end
