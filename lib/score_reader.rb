@@ -15,6 +15,7 @@ class ScoreReader
     end
 
     @curricula = CSV.read(curricula).map {|grade, *lessons| [grade, lessons] }
+    @presenter = presenter
   end
 
   def sieve(student)
@@ -22,6 +23,15 @@ class ScoreReader
       valid_lessons = lessons.select {|l| student.needs_lesson?(l, grade)}
       [grade, valid_lessons] unless valid_lessons.empty?
     end.compact
+  end
+
+  def lesson_plans!
+    unless defined? @lesson_plans
+      output = CommonCore::InsensitiveHash.new
+      @students.each {|s| output[s.name] = sieve(s)}
+      @lesson_plans = output
+    end
+    @lesson_plans
   end
 
 end
