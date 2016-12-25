@@ -1,7 +1,7 @@
 require "common_core/version"
-require 'student'
-require 'presenter'
-require 'score_reader'
+require 'common_core/student'
+require 'common_core/presenter'
+require 'common_core/score_reader'
 require 'insensitive_hash/minimal'
 
 

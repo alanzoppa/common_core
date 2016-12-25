@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "common_core"
+
+# You can add fixtures and/or initialization code here to make experimenting
+# with your gem easier. You can also use a different console, if you like.
+@p = CommonCore::Presenter.new
+
+curriculum, scores = ['domain_order.csv', 'student_tests.csv'].map do |f|
+  File.join(CommonCore::ROOT, 'data', f)
+end
+@reader = CommonCore::ScoreReader.new(curriculum, scores, @p)
+@reader.presenter.print_table(@reader.lesson_plans!)

@@ -1,7 +1,7 @@
 require 'csv'
 
 class ScoreReader
-  attr_reader :curricula, :students
+  attr_reader :curricula, :students, :presenter
 
   def initialize(curricula, scores, presenter)
     scores_matrix = CSV.read(scores)
