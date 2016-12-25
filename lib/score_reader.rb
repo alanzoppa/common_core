@@ -19,4 +19,8 @@ class ScoreReader
       CommonCore::Student.new(name, student)
     end
   end
+
+  #def sieve(student)
+
+  #end
 end

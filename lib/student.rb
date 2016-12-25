@@ -11,4 +11,10 @@ class Student
     @scores[key]
   end
 
+  def needs_lesson?(skill, level)
+    level = level.is_a?(Symbol) ? level.to_s.to_i : level.to_i
+    raise RangeError, "Skills must be integers zero or greater" if level < 0
+    @scores[skill].to_i <= level.to_i
+  end
+
 end
