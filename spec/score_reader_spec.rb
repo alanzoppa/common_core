@@ -15,4 +15,11 @@ describe CommonCore::ScoreReader do
       expect(value).to be_instance_of Array
     end
   end
+
+
+  it "should initialize students" do
+    @reader.students.each do |s|
+      expect(s).to be_instance_of CommonCore::Student
+    end
+  end
 end
