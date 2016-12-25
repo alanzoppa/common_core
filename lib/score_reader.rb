@@ -5,7 +5,7 @@ class ScoreReader
 
   def initialize(curriculum, scores, presenter)
     @presenter = presenter
-    @curricula = {}
+    @curricula = CommonCore::IndifferentHash.new
 
     CSV.foreach(curriculum) do |key,*values|
       @curricula[key] = values

@@ -8,4 +8,12 @@ module CommonCore
   Student = ::Student
   Presenter = ::Presenter
   ScoreReader = ::ScoreReader
+
+  # basically HashWithIndifferentAccess from Rails::ActiveSupport
+  class IndifferentHash < Hash
+    def initialize
+      super
+      self.default_proc = proc {|h, k| h.key?(k.to_s) ? h[k.to_s] : nil}
+    end
+  end
 end
