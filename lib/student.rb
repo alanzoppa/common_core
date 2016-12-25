@@ -1,4 +1,5 @@
 class Student
+  attr_reader :name, :scores
   def initialize(name, scores)
     @name = name
     @scores = CommonCore::InsensitiveHash.new

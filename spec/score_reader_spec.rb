@@ -13,14 +13,16 @@ describe CommonCore::ScoreReader do
   end
 
   it "should open the curriculum file" do
-    expect(@reader.curricula.map {|c| c.keys.first }).to eql ["K", "1", "2", "3", "4", "5", "6"]
-    @reader.curricula.each do |value|
-      expect(value).to be_instance_of CommonCore::InsensitiveHash
+    expect(@reader.curricula.map {|grade, *lessons| grade }).to eql ["K", "1", "2", "3", "4", "5", "6"]
+    @reader.curricula.each do |grade, *lessons|
+      expect(lessons).to be_instance_of Array
     end
   end
 
 
   it "should initialize students" do
+    expect(@reader.students.first.name).to eql "Albin Stanton"
+    expect(@reader.students.first.scores).to eql({"RF"=>2, "RL"=>3, "RI"=>0, "L"=>3})
     @reader.students.each do |s|
       expect(s).to be_instance_of CommonCore::Student
     end
@@ -28,14 +30,24 @@ describe CommonCore::ScoreReader do
 
   it "should generate a lesson plan" do
     expect(@reader.sieve(@student)).to eql [
-      {"K"=>["RI"]},
-      {"1"=>["RI"]},
-      {"2"=>["RF", "RI"]},
-      {"3"=>["RF", "RL", "RI", "L"]},
-      {"4"=>["RI", "RL", "L"]},
-      {"5"=>["RI", "RL", "L"]},
-      {"6"=>["RI", "RL"]}
+      ["K", ["RI"]],
+      ["1", ["RI"]],
+      ["2", ["RF", "RI"]],
+      ["3", ["RF", "RL", "RI", "L"]],
+      ["4", ["RI", "RL", "L"]],
+      ["5", ["RI", "RL", "L"]],
+      ["6", ["RI", "RL"]]
     ]
+  end
+
+  it "should ignore empty rows" do
+    student = CommonCore::Student.new(
+      "John McGuirk", RF:"5", RL:"5", RI:'5', L:"4"
+    )
+    plan = @reader.sieve(student)
+    expect(@reader.sieve(student)).to eql(
+      [["4", ["L"]], ["5", ["RI", "RL", "L"]], ["6", ["RI", "RL"]]]
+    )
   end
 
 end

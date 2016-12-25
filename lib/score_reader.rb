@@ -7,10 +7,8 @@ class ScoreReader
     @presenter = presenter
     @curricula = []
 
-    CSV.foreach(curricula) do |key,*values|
-      h = CommonCore::InsensitiveHash.new
-      h[key] = values
-      @curricula << h.freeze
+    CSV.foreach(curricula) do |grade, *lessons|
+      @curricula << [grade, lessons]
     end
     @curricula.freeze
 
@@ -18,25 +16,15 @@ class ScoreReader
     headers = scores_matrix[0]
     @students = scores_matrix[1..-1].map {|s| headers.zip(s).to_h}
     @students.map! do |student|
-      name = student.delete("Student Name")
-      CommonCore::Student.new(name, student)
+      CommonCore::Student.new(student.delete("Student Name"), student)
     end
   end
 
   def sieve(student)
-    @lesson_plan = []
-    @curricula.each do |curriculum|
-      grade = curriculum.keys.first
-      lessons = curriculum[grade]
-      grade_hash = CommonCore::InsensitiveHash.new
-      grade_hash[grade] = []
-      lessons.each do |lesson|
-        if student.needs_lesson?(lesson, grade)
-          grade_hash[grade] << lesson
-        end
-      end
-      @lesson_plan << grade_hash unless grade_hash[grade].empty?
-    end
-    @lesson_plan 
+    @curricula.map do |grade, lessons|
+      valid_lessons = lessons.select {|l| student.needs_lesson?(l, grade)}
+      [grade, valid_lessons] unless valid_lessons.empty?
+    end.compact
   end
+
 end
