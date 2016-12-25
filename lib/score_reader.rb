@@ -3,13 +3,16 @@ require 'csv'
 class ScoreReader
   attr_reader :curricula, :students
 
-  def initialize(curriculum, scores, presenter)
+  def initialize(curricula, scores, presenter)
     @presenter = presenter
-    @curricula = CommonCore::IndifferentHash.new
+    @curricula = []
 
-    CSV.foreach(curriculum) do |key,*values|
-      @curricula[key] = values
+    CSV.foreach(curricula) do |key,*values|
+      h = CommonCore::IndifferentHash.new
+      h[key] = values
+      @curricula << h
     end
+
 
     scores_matrix = CSV.read(scores)
     headers = scores_matrix[0]
@@ -20,7 +23,6 @@ class ScoreReader
     end
   end
 
-  #def sieve(student)
-
-  #end
+  def sieve(student)
+  end
 end

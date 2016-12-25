@@ -10,9 +10,9 @@ describe CommonCore::ScoreReader do
   end
 
   it "should open the curriculum file" do
-    expect(@reader.curricula.keys).to eql ["K", "1", "2", "3", "4", "5", "6"]
-    @reader.curricula.values.each do |value|
-      expect(value).to be_instance_of Array
+    expect(@reader.curricula.map {|c| c.keys.first }).to eql ["K", "1", "2", "3", "4", "5", "6"]
+    @reader.curricula.each do |value|
+      expect(value).to be_instance_of CommonCore::IndifferentHash
     end
   end
 
