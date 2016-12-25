@@ -9,28 +9,93 @@ TODO: Delete this and the text above, and describe your gem
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'common_core'
+git clone git@github.com:alanzoppa/common_core.git
+cd common_core
+bin/setup
 ```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install common_core
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+bin/curriculum
+```
 
-## Development
+will print something like this
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+```
+═══════════════════════════════════════════════════════════════════════════════
+║                 NAME                 ║             LESSON PLAN              ║
+═══════════════════════════════════════════════════════════════════════════════
+║         Albin Stanton                ║    K.RI, 1.RI, 2.RF, 2.RI, 3.RF      ║
+║         Erik Purdy                   ║    1.RL, 1.RI, 2.RI, 2.RL, 2.L       ║
+║         Aimee Cole                   ║    K.RF, K.RL, 1.RF, 1.RL, 1.RI      ║
+║         Frederik Schulist            ║    2.RF, 3.RF, 4.RI, 4.RL, 4.L       ║
+║         Addie Green                  ║    K.RI, 1.RI, 2.RF, 2.RI, 2.L       ║
+║         Missouri Auer                ║    1.RI, 2.RI, 2.RL, 2.L, 3.RL       ║
+║         Christopher Hayes            ║    K.RI, 1.RI, 2.RI, 2.L, 3.RI       ║
+║         Enos Jacobi                  ║    K.RF, K.RL, 1.RF, 1.RL, 2.RF      ║
+║         Conrad Nitzsche              ║    K.RI, 1.RF, 1.RI, 2.RF, 2.RI      ║
+║         Jazlyn Wisoky                ║    3.RL, 3.L, 4.RL, 4.L, 5.RI        ║
+║         Kelley Emard                 ║    K.RF, K.RI, 1.RF, 1.RI, 2.RF      ║
+║         Dell Kozey                   ║    K.RF, 1.RF, 2.RF, 2.L, 3.RF       ║
+║         Kraig Goldner                ║    2.RI, 3.RI, 3.L, 4.RI, 4.RL       ║
+║         Stephon Ondricka             ║    2.L, 3.RI, 3.L, 4.RI, 4.L         ║
+║         Tracey Lind                  ║    K.RF, 1.RF, 1.RL, 2.RF, 2.RL      ║
+║         Elissa Schinner              ║    1.RI, 2.RI, 3.RL, 3.RI, 4.RI      ║
+║         Orpha Bartoletti             ║    1.RF, 2.RF, 2.RI, 2.L, 3.RF       ║
+║         Timmothy Torphy              ║    K.RF, K.RI, 1.RF, 1.RL, 1.RI      ║
+║         Maia Torphy                  ║    K.RF, 1.RF, 2.RF, 2.RI, 2.L       ║
+║         Danyka Pfeffer               ║    2.L, 3.L, 4.L, 5.RI, 5.RL         ║
+║         Leo O'Connell                ║    K.RL, K.RI, 1.RL, 1.RI, 2.RI      ║
+║         Scotty Kovacek               ║    K.RF, 1.RF, 2.RF, 2.L, 3.RF       ║
+║         Cameron Prohaska             ║    2.RF, 2.RI, 3.RF, 3.RI, 4.RI      ║
+║         Angus Torp                   ║    2.RF, 2.L, 3.RF, 3.L, 4.RL        ║
+║         Douglas Feil                 ║    1.RF, 1.RL, 1.RI, 2.RF, 2.RI      ║
+║         Maxime Runte                 ║    K.RL, 1.RL, 2.RF, 2.RL, 2.L       ║
+║         Mortimer Denesik             ║    K.RF, K.RL, 1.RF, 1.RL, 2.RF      ║
+║         Bennett Muller               ║    2.L, 3.L, 4.L, 5.RI, 5.RL         ║
+║         Ayana Runolfsson             ║    K.RF, 1.RF, 2.RF, 2.RL, 2.L       ║
+║         Angelina Runolfsson          ║    K.RF, 1.RF, 1.RI, 2.RF, 2.RI      ║
+═══════════════════════════════════════════════════════════════════════════════
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+if you prefer to to print a bunny-bordered table, just override HORIZONTAL_CHAR and VERTICAL_CHAR
 
-## Contributing
+```
+$ HORIZONTAL_CHAR=🐇  VERTICAL_CHAR=🐇  bin/curriculum
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/common_core.
-
+🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇
+🐇                 NAME                 🐇             LESSON PLAN              🐇
+🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇
+🐇         Albin Stanton                🐇    K.RI, 1.RI, 2.RF, 2.RI, 3.RF      🐇
+🐇         Erik Purdy                   🐇    1.RL, 1.RI, 2.RI, 2.RL, 2.L       🐇
+🐇         Aimee Cole                   🐇    K.RF, K.RL, 1.RF, 1.RL, 1.RI      🐇
+🐇         Frederik Schulist            🐇    2.RF, 3.RF, 4.RI, 4.RL, 4.L       🐇
+🐇         Addie Green                  🐇    K.RI, 1.RI, 2.RF, 2.RI, 2.L       🐇
+🐇         Missouri Auer                🐇    1.RI, 2.RI, 2.RL, 2.L, 3.RL       🐇
+🐇         Christopher Hayes            🐇    K.RI, 1.RI, 2.RI, 2.L, 3.RI       🐇
+🐇         Enos Jacobi                  🐇    K.RF, K.RL, 1.RF, 1.RL, 2.RF      🐇
+🐇         Conrad Nitzsche              🐇    K.RI, 1.RF, 1.RI, 2.RF, 2.RI      🐇
+🐇         Jazlyn Wisoky                🐇    3.RL, 3.L, 4.RL, 4.L, 5.RI        🐇
+🐇         Kelley Emard                 🐇    K.RF, K.RI, 1.RF, 1.RI, 2.RF      🐇
+🐇         Dell Kozey                   🐇    K.RF, 1.RF, 2.RF, 2.L, 3.RF       🐇
+🐇         Kraig Goldner                🐇    2.RI, 3.RI, 3.L, 4.RI, 4.RL       🐇
+🐇         Stephon Ondricka             🐇    2.L, 3.RI, 3.L, 4.RI, 4.L         🐇
+🐇         Tracey Lind                  🐇    K.RF, 1.RF, 1.RL, 2.RF, 2.RL      🐇
+🐇         Elissa Schinner              🐇    1.RI, 2.RI, 3.RL, 3.RI, 4.RI      🐇
+🐇         Orpha Bartoletti             🐇    1.RF, 2.RF, 2.RI, 2.L, 3.RF       🐇
+🐇         Timmothy Torphy              🐇    K.RF, K.RI, 1.RF, 1.RL, 1.RI      🐇
+🐇         Maia Torphy                  🐇    K.RF, 1.RF, 2.RF, 2.RI, 2.L       🐇
+🐇         Danyka Pfeffer               🐇    2.L, 3.L, 4.L, 5.RI, 5.RL         🐇
+🐇         Leo O'Connell                🐇    K.RL, K.RI, 1.RL, 1.RI, 2.RI      🐇
+🐇         Scotty Kovacek               🐇    K.RF, 1.RF, 2.RF, 2.L, 3.RF       🐇
+🐇         Cameron Prohaska             🐇    2.RF, 2.RI, 3.RF, 3.RI, 4.RI      🐇
+🐇         Angus Torp                   🐇    2.RF, 2.L, 3.RF, 3.L, 4.RL        🐇
+🐇         Douglas Feil                 🐇    1.RF, 1.RL, 1.RI, 2.RF, 2.RI      🐇
+🐇         Maxime Runte                 🐇    K.RL, 1.RL, 2.RF, 2.RL, 2.L       🐇
+🐇         Mortimer Denesik             🐇    K.RF, K.RL, 1.RF, 1.RL, 2.RF      🐇
+🐇         Bennett Muller               🐇    2.L, 3.L, 4.L, 5.RI, 5.RL         🐇
+🐇         Ayana Runolfsson             🐇    K.RF, 1.RF, 2.RF, 2.RL, 2.L       🐇
+🐇         Angelina Runolfsson          🐇    K.RF, 1.RF, 1.RI, 2.RF, 2.RI      🐇
+🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇
+```
