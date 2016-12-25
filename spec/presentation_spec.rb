@@ -17,14 +17,9 @@ describe CommonCore::Presentation do
     expect( @p["RL"] ).to eql "Reading Literature"
   end
 
-  it "accepts extra random stuff" do
+  it "accepts extra keyword arguments" do
     p = CommonCore::Presentation.new(stuff: "things")
     expect( p[:stuff] ).to eql "things"
   end
 
-
-
-  #it "spins up from arbitrary scores" do
-    #student = CommonCore::Student.new("John McGuirk")
-  #end
 end
