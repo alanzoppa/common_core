@@ -2,9 +2,9 @@ require "spec_helper"
 require 'pry'
 
 
-describe CommonCore::Presentation do
+describe CommonCore::Presenter do
   before :all do
-    @p = CommonCore::Presentation.new
+    @p = CommonCore::Presenter.new
   end
 
   it "loads definitions with indifferent access" do
@@ -18,7 +18,7 @@ describe CommonCore::Presentation do
   end
 
   it "accepts extra keyword arguments" do
-    p = CommonCore::Presentation.new(stuff: "things")
+    p = CommonCore::Presenter.new(stuff: "things")
     expect( p[:stuff] ).to eql "things"
   end
 

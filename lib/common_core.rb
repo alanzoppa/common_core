@@ -1,9 +1,11 @@
 require "common_core/version"
 require 'student'
-require 'presentation'
+require 'presenter'
+require 'score_reader'
 
 module CommonCore
   ROOT = File.expand_path(File.join(File.dirname(__FILE__), '..'))
   Student = ::Student
-  Presentation = ::Presentation
+  Presenter = ::Presenter
+  ScoreReader = ::ScoreReader
 end

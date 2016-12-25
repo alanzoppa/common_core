@@ -1,6 +1,6 @@
 require 'csv'
 
-class Presentation
+class Presenter
   attr_reader :definitions
 
   # Accepts any number of key/value pairs as {dehumanized: humanized}
