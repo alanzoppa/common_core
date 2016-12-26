@@ -65,7 +65,7 @@ describe CommonCore::ScoreReader do
     ).to be_instance_of CommonCore::InsensitiveHash
   end
 
-  it "should give you nothing if you score higher than a known grade level" do
+  it "should not fill up all five columns if you test out of things" do
     expect(
       @reader.lesson_plans!.find {|name, *scores| name == 'George Harrison'}
     ).to eql(
@@ -73,7 +73,7 @@ describe CommonCore::ScoreReader do
     )
   end
 
-  it "Not fill up all five columns if it runs out of stuff" do
+  it "should not fill up all five columns if you test out of other things" do
     expect(
       @reader.lesson_plans!.find {|name, *scores| name == 'John Lennon'}
     ).to eql(
@@ -81,18 +81,29 @@ describe CommonCore::ScoreReader do
     )
   end
 
-  it "tolerate noobs and put them in Kindergarten" do
-    @csv_output = @reader.presenter.to_csv(@reader.lesson_plans!)
-    @csv_as_matrix = @csv_output.split("\n").map(&:parse_csv)
+  describe "tests that use CSV output because it's truncated" do
 
-    expect(
-      @csv_as_matrix.find {|name, *scores| name == 'Paul McCartney'}
-    ).to eql(
-      ["Paul McCartney", "K.RF", "K.RL", "K.RI", "1.RF", "1.RL"]
-    )
-  end
+    before :all do
+      @csv_output = @reader.presenter.to_csv(@reader.lesson_plans!)
+      @csv_as_matrix = @csv_output.split("\n").map(&:parse_csv)
+    end
 
+    it "should tolerate noobs and put them in Kindergarten" do
+      expect(
+        @csv_as_matrix.find {|name, *scores| name == 'Paul McCartney'}
+      ).to eql(
+        ["Paul McCartney", "K.RF", "K.RL", "K.RI", "1.RF", "1.RL"]
+      )
+    end
 
+    it "should give you nothing if you test out of everything" do
+      expect(
+        @csv_as_matrix.find {|name, *scores| name == 'Ringo Starr'}
+      ).to eql(
+        ["Ringo Starr",]
+      )
+    end 
 
+  end 
 
 end

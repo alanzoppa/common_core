@@ -22,6 +22,12 @@ cd common_core
 bin/setup
 ```
 
+## Run Tests
+
+```
+rake spec
+```
+
 ## Usage
 
 
