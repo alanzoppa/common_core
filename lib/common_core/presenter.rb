@@ -30,15 +30,17 @@ class Presenter
     output
   end
 
-  def print_table(input)
+  def to_table(input)
     h, v = [ENV['HORIZONTAL_CHAR'] || '═', ENV['VERTICAL_CHAR'] || '║']
-    puts h * 79
-    puts "#{v}#{'NAME'.center(38)}#{v}#{'LESSON PLAN'.center(38)}#{v}"
-    puts h * 79
+    out = []
+    out << h * 79
+    out << "#{v}#{'NAME'.center(38)}#{v}#{'LESSON PLAN'.center(38)}#{v}"
+    out << h * 79
     input.each do |name, lessons|
-      puts "#{v}#{name.ljust(20).center(38)}#{v}#{as_array_of_lessons(lessons).join(', ').ljust(30).center(38)}#{v}"
+      out << "#{v}#{name.ljust(20).center(38)}#{v}#{as_array_of_lessons(lessons).join(', ').ljust(30).center(38)}#{v}"
     end
-    puts h * 79
+    out << h * 79
+    out.join("\n")
   end
 
   def to_csv(input)

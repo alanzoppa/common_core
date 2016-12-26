@@ -1,6 +1,5 @@
 require "spec_helper"
-require 'pry'
-
+require 'pry' 
 
 describe CommonCore::Presenter do
   before :all do
@@ -40,8 +39,17 @@ describe CommonCore::Presenter do
     end
   end
 
-  describe "print_table" do
-    specify { expect { @reader.presenter.print_table(@reader.lesson_plans!) }.to output.to_stdout }
+  describe "to_table" do
+    before :all do
+      @table_output = @reader.presenter.to_table(@reader.lesson_plans!)
+      @table_output_rows = @table_output.split("\n")
+    end
+
+    it "should generate a table" do
+      expect(@table_output_rows[3]).to eql(
+        "║         Albin Stanton                ║    K.RI, 1.RI, 2.RF, 2.RI, 3.RF      ║"
+      )
+    end
   end
 
 end

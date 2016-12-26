@@ -12,5 +12,5 @@ require "common_core"
 if ENV['COMMON_CORE_CSV']
   puts @reader.presenter.to_csv(@reader.lesson_plans!)
 else
-  @reader.presenter.print_table(@reader.lesson_plans!)
+  puts @reader.presenter.to_table(@reader.lesson_plans!)
 end
