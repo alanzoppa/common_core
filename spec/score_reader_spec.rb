@@ -81,6 +81,18 @@ describe CommonCore::ScoreReader do
     )
   end
 
+  it "tolerate noobs and put them in Kindergarten" do
+    @csv_output = @reader.presenter.to_csv(@reader.lesson_plans!)
+    @csv_as_matrix = @csv_output.split("\n").map(&:parse_csv)
+
+    expect(
+      @csv_as_matrix.find {|name, *scores| name == 'Paul McCartney'}
+    ).to eql(
+      ["Paul McCartney", "K.RF", "K.RL", "K.RI", "1.RF", "1.RL"]
+    )
+  end
+
+
 
 
 end

@@ -1,8 +1,16 @@
 # CommonCore
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/common_core`. To experiment with that code, run `bin/console` for an interactive prompt.
+Generates an individual curriculum based on grade-by-brade curricula and individual test scores. Assumptions:
 
-TODO: Delete this and the text above, and describe your gem
+## Implementation
+
+Sort of the most naive [sieve](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes) ever. Since we're just doing integer math, leaving it that way because simplicity > performance until it matters.
+
+## Assumptions
+
+* Grade levels are ordinal. It's a happy coincidence that "K".to_i == 0. If you use anything else besides a >0 integer, things won't work properly.
+* Nothing will warn you if a student has tested out of everything, they just won't get a curriculum.
+
 
 ## Installation
 
@@ -16,8 +24,15 @@ bin/setup
 
 ## Usage
 
+
+For CSV output, do something like this from the root folder of the gem:
+
 ```
-bin/curriculum
+COMMON_CORE_CSV=1 COMMON_CORE_SCORES=./data/student_tests.csv COMMON_CORE_CURRICULUM=./data/domain_order.csv bin/curriculum > ~/some_path.csv
+```
+
+```
+COMMON_CORE_SCORES=./data/student_tests.csv COMMON_CORE_CURRICULUM=./data/domain_order.csv bin/curriculum
 ```
 
 will print something like this
@@ -62,7 +77,7 @@ will print something like this
 if you prefer to to print a bunny-bordered table, just override HORIZONTAL_CHAR and VERTICAL_CHAR
 
 ```
-$ HORIZONTAL_CHAR=🐇  VERTICAL_CHAR=🐇  bin/curriculum
+$ HORIZONTAL_CHAR=🐇  VERTICAL_CHAR=🐇  COMMON_CORE_SCORES=./data/student_tests.csv COMMON_CORE_CURRICULUM=./data/domain_order.csv bin/curriculum
 
 🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇🐇
 🐇                 NAME                 🐇             LESSON PLAN              🐇
