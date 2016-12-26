@@ -7,7 +7,7 @@ describe CommonCore::Presenter do
     @p = CommonCore::Presenter.new
 
     curriculum, scores = ['domain_order.csv', 'student_tests.csv'].map do |f|
-      File.join(CommonCore::ROOT, 'data', f)
+      File.join(CommonCore::ROOT, 'spec', f)
     end
     @reader = CommonCore::ScoreReader.new(curriculum, scores, @p)
   end
@@ -36,10 +36,7 @@ describe CommonCore::Presenter do
     it "should be a 6xn matrix where n >= 2" do
       expect( @csv_as_matrix.length ).to be >= 2
       expect( @csv_as_matrix[1..-1].any? {|arr| arr.length == 6 } ).to be true
-    end
-
-    it "should generate CSV output" do
-      puts @csv_output
+      #puts @csv_output
     end
   end
 
