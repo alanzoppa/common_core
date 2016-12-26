@@ -41,4 +41,13 @@ class Presenter
     puts h * 79
   end
 
+  def to_csv(input)
+    CSV.generate do |csv|
+      csv << ["Student", "Lesson 1", "Lesson 2", "Lesson 3", "Lesson 4", "Lesson 5"]
+      input.each do |name, lessons|
+        csv << [name, *as_array_of_lessons(lessons, 5)]
+      end
+    end
+  end
+
 end

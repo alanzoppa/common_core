@@ -27,6 +27,22 @@ describe CommonCore::Presenter do
     expect( p[:stuff] ).to eql "things"
   end
 
+  describe "to_csv" do
+    before :all do
+      @csv_output = @reader.presenter.to_csv(@reader.lesson_plans!)
+      @csv_as_matrix = @csv_output.split("\n").map(&:parse_csv)
+    end
+
+    it "should be a 6xn matrix where n >= 2" do
+      expect( @csv_as_matrix.length ).to be >= 2
+      expect( @csv_as_matrix[1..-1].any? {|arr| arr.length == 6 } ).to be true
+    end
+
+    it "should generate CSV output" do
+      puts @csv_output
+    end
+  end
+
   describe "print_table" do
     specify { expect { @reader.presenter.print_table(@reader.lesson_plans!) }.to output.to_stdout }
   end
