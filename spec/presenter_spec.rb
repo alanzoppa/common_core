@@ -1,5 +1,4 @@
 require "spec_helper"
-require 'pry' 
 
 describe CommonCore::Presenter do
   before :all do

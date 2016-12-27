@@ -9,7 +9,8 @@ class Presenter
 
   def initialize(**kwargs)
     @definitions = CommonCore::InsensitiveHash.new
-    CSV.foreach(File.join(CommonCore::ROOT, 'data', 'definitions.csv')) do |key,value|
+    definitions = File.join(CommonCore::ROOT, 'data', 'definitions.csv')
+    CSV.foreach(definitions) do |key,value|
       @definitions[key] = value
     end
     @definitions.merge!(kwargs)
@@ -37,7 +38,9 @@ class Presenter
     out << "#{v}#{'NAME'.center(38)}#{v}#{'LESSON PLAN'.center(38)}#{v}"
     out << h * 79
     input.each do |name, lessons|
-      out << "#{v}#{name.ljust(20).center(38)}#{v}#{as_array_of_lessons(lessons).join(', ').ljust(30).center(38)}#{v}"
+      centered_name = name.ljust(20).center(38)
+      lessons = as_array_of_lessons(lessons).join(', ').ljust(30).center(38)
+      out << "#{v}#{centered_name}#{v}#{lessons}#{v}"
     end
     out << h * 79
     out.join("\n")
@@ -45,7 +48,9 @@ class Presenter
 
   def to_csv(input)
     CSV.generate do |csv|
-      csv << ["Student", "Lesson 1", "Lesson 2", "Lesson 3", "Lesson 4", "Lesson 5"]
+      csv << [
+        "Student", "Lesson 1", "Lesson 2", "Lesson 3", "Lesson 4", "Lesson 5"
+      ]
       input.each do |name, lessons|
         csv << [name, *as_array_of_lessons(lessons, 5)]
       end

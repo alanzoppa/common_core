@@ -19,6 +19,8 @@ class ScoreReader
   end
 
   def sieve(student)
+    # Removes a copy of the curriculum with all lessons for which
+    # Student#needs_lesson? returns false remvoed
     @curricula.map do |grade, lessons|
       valid_lessons = lessons.select {|l| student.needs_lesson?(l, grade)}
       [grade, valid_lessons] unless valid_lessons.empty?

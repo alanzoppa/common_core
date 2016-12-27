@@ -19,7 +19,9 @@ describe CommonCore::ScoreReader do
   end
 
   it "should open the curriculum file" do
-    expect(@reader.curricula.map {|grade, *lessons| grade }).to eql ["K", "1", "2", "3", "4", "5", "6"]
+    expect(
+      @reader.curricula.map {|grade, *lessons| grade }
+    ).to eql ["K", "1", "2", "3", "4", "5", "6"]
     @reader.curricula.each do |grade, *lessons|
       expect(lessons).to be_instance_of Array
     end
@@ -28,7 +30,9 @@ describe CommonCore::ScoreReader do
 
   it "should initialize students" do
     expect(@reader.students.first.name).to eql "Albin Stanton"
-    expect(@reader.students.first.scores).to eql({"RF"=>2, "RL"=>3, "RI"=>0, "L"=>3})
+    expect(@reader.students.first.scores).to eql(
+      {"RF"=>2, "RL"=>3, "RI"=>0, "L"=>3}
+    )
     @reader.students.each do |s|
       expect(s).to be_instance_of CommonCore::Student
     end
