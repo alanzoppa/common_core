@@ -4,7 +4,7 @@ Generates an individual curriculum based on grade-by-brade curricula and individ
 
 ## Implementation
 
-Sort of a naive sieve. Since we're just doing integer math, leaving it that way because simplicity > performance until it matters.
+Naively evaluates every course offering per student. Since we're just doing integer math, leaving it that way because simplicity > performance until it matters.
 
 ## Assumptions
 
