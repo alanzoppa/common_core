@@ -4,7 +4,7 @@ Generates an individual curriculum based on grade-by-brade curricula and individ
 
 ## Implementation
 
-Sort of the most naive [sieve](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes) ever. Since we're just doing integer math, leaving it that way because simplicity > performance until it matters.
+Sort of a naive sieve. Since we're just doing integer math, leaving it that way because simplicity > performance until it matters.
 
 ## Assumptions
 
